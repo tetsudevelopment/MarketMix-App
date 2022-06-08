@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Calzado Marin</title>
+</head>
+
+<body class="rounded">
+  <div id="app" class="d-flex flex-column vh-100">
+
+    <!-- Inicio del encabezado -->
+    <header>
+      <div class="container-fluid rounded container-header">
+        <h1>Calzado Marin S.A.S</h1>
+        <img src="https://cdn-icons-png.flaticon.com/128/2742/2742687.png" alt="Icon">
+        <button class="btn btn-primary ms-5" @click="salir">Salir</button>
+      </div>
+    </header>
+    <!-- Fin del encabezado -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime labore ipsam ipsa iste necessitatibus dolores
+          sapiente al
+
+        </p>
+    
+    <!-- factura  -->
+    <div class="container-fluid container-main" v-if="invoice===1">
+
+      <div class="container-fluid main">
+        <div class="prueba col">
+          <div class="container-title">
+            <h1 class="title">Factura Ensamblador(a)</h1>
+          </div>
+          <div class="container mt-3 table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Salario Base:</th>
+                  <th scope="col">Horas Extras</th>
+                  <th scope="col">Zapatillas Ensa.</th>
+                  <th scope="col">Zapatos Ensa</th>
+                  <th scope="col">Valor Extras</th>
+                  <th scope="col">Sub trasporte</th>
+                  <th scope="col">Bonificación</th>
+                  <th scope="col">Hijos</th>
+                  <th scope="col">Bono por Hijo</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th>1.000.000</th>
+                  <td>5</td>
+                  <td>1200</td>
+                  <td>2000</td>
+                  <td>30.000</td>
+                  <td>200.000</td>
+                  <td>100.000</td>
+                  <td>Si</td>
+                  <td>60.000</td>
+                  <td>3.000.000</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+
+        <div class="container-button mt-5 col-3">
+          <button class="btn">Liquidación</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- inicio login -->
+    <div class="container-fluid container-main" v-if="watchMain===0">
+
+      <div class="container-fluid main">
+        <div class="prueba col">
+          <div class="container-title">
+            <h1 class="title">Inicio de sesion</h1>
+          </div>
+          <div class="container-select mt-4">
+            <section class="container col-4">
+              <div class="contianer-label mb-3 mt-3">
+                <label for="">Cargo</label>
+              </div>
+              <select class="form-select rounded-2" aria-label="Default select example" v-model="id">
+                <option selected>Seleccione un cargo </option>
+                <option value="1">Administrador(a)</option>
+                <option value="2">Secretario(a)</option>
+                <option value="3">Vendedor(a)</option>
+                <option value="4">Ensamblador(a)</option>
+              </select>
+            </section>
+
+          </div>
+
+          <div class="container container-select mt-5">
+            <section class="col-4">
+              <div class="contianer-label mb-3 ">
+                <label for="">Pin de acceso</label>
+              </div>
+              <input type="password" name="pin" id="pin" class="form-control rounded-2" v-model="pass">
+            </section>
+          </div>
+        </div>
+
+        <div class="container-button mt-5 col-3">
+          <button class="btn" @click="login"> Ingresar</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- secretaria -->
+    <div class="container-fluid container-main" v-else-if="watchMain===2">
+
+      <div class="container-fluid main">
+        <div class="prueba col">
+          <div class="container-title">
+            <h1 class="title">Secretario(a)</h1>
+          </div>
+          <div class="container container-select-2 mt-5 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Horas Extras </label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <div class="container-button mt-5 col-3">
+          <button class="btn">Liquidación</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Administrador-->
+    <div class="container container-main" v-else-if="watchMain===1">
+      
+      <div class="container ">
+
+
+      </div>
+
+
+
+
+    </div>
+
+    <!-- vendedor -->
+    <div class="container-fluid container-main" v-else-if="watchMain===3">
+
+      <div class="container-fluid main">
+        <div class="prueba col">
+          <div class="container-title">
+            <h1 class="title">Vendedor(a)</h1>
+          </div>
+          <div class="container container-select-2 mt-5 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Zapatillas vendidas </label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+          <div class="container container-select-2 mt-5 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Zapatos Vendidos</label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <div class="container-button mt-5 col-3">
+          <button class="btn">Liquidación</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Ensamblador-hijos -->
+    <div class="container-fluid container-main" v-else-if="watchMain===4">
+
+      <div class="container-fluid main">
+        <div class="prueba col">
+          <div class="container-title">
+            <h1 class="title">Ensamblador(a)</h1>
+          </div>
+          <div class="container container-select-2 mt-3 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Horas extras</label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+          <div class="container container-select-2 mt-2 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Zapatos ensamblados</label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+          <div class="container container-select-2 mt-2 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">Zapatillas ensambladas</label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+          <div>
+            <label for="">¿Tienes Hijos?</label>
+          </div>
+
+          <div class="container radio" id="radio">
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label ms-3" for="flexRadioDefault1">Si</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label ms-2" for="flexRadioDefault2">No</label>
+            </div>
+          </div>
+          <div class="container container-select-2 mt-3 grid">
+            <section class="row col-section">
+              <div class="contianer-label mb-3 row">
+                <label for="" class="col mb-1">¿Cuántos hijos tiene?</label>
+                <input type="number" name="pin" class="form-control rounded-2 col-6">
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <div class="container-button mt-5 col-3">
+          <button class="btn">Liquidación</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Inicio del Pide de pagina -->
+    <footer class="d-flex mt-auto">
+      <div class="container d-flex align-items-center justify-content-center" >
+        <h4>copyright© Calzado Marin S.A.S</h4>
+      </div>
+    </footer>
+    <!-- Fin del pie de pagina  -->
+    
+    
+  </div>
+  <script src="../BackEnd/js/vue.js"></script>
+  <script src="../BackEnd/js/main.js"></script>
+</body>
+
+</html>

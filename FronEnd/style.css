@@ -1,0 +1,122 @@
+:root{
+  --primary:#5086C1;
+  --secondary:#6A9EDA;
+  --tertiary: #84B6F4;
+  --quaternary: #B2DAFA;
+  --quinary: #E0FFFF;
+  --text: #000000;
+  --lg-header:40px;
+  --lg-title:35px;
+  --lg:27px;
+  --sm:16px;
+  --xs:10px;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+#app{
+  background:var(--primary);
+}
+/* facturas */
+.table-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-container table{
+  background: var(--quinary);
+  border-radius: 10px;
+  height: 300px;
+}
+
+
+/* Inicio header */
+.container-header{
+  background: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+  box-shadow: 0 0 10px 0.1px;
+}
+.container-header img{
+  width: 50px;
+  margin-left: 50px;
+}
+.title{
+  font-weight: bold;
+  font-size: var(--lg-header);
+}.title-footer {
+  font-weight: bold;
+  font-size: var(--sm);
+}
+.container-main{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.prueba{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.prueba div{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.main{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-select-2 section{
+  width: 40%;
+}
+#radio{
+  width: 20%;
+}
+
+.form-select{
+  box-shadow: 0 0 10px 0.1px;
+}
+.container-button{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  height: 4rem;
+  margin-top: 4px;
+}
+.container-button button{
+  background: var(--quaternary);
+  width: 60%;
+  border-radius: 20px;
+  font-size: 20px;
+}
+label{
+  font-size: var(--sm);
+  font-weight: bolder;
+}
+option{
+  background: var(--quinary);
+}
+.form-control{
+  background-color: var(--quinary);
+  box-shadow: 0 0 10px 0.1px;
+  width: 100%;
+}
+h1{
+  font-weight: bold;
+}
+/* Pie de pagina */
+footer{
+    background:var(--secondary);
+    color: var(--text);
+    height: 10vh;
+}
