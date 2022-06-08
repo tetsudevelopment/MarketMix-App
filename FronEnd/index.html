@@ -33,10 +33,6 @@
         </div>
       </header>
     <!-- Fin del encabezado -->
-    <p>
-      
-
-    </p>
 
     <!-- factura  -->
     <div class="container-fluid container-main" v-if="invoice===1">
@@ -91,16 +87,18 @@
     </div>
 
     <!-- inicio login -->
-    <div class="container-fluid container-main" v-if="watchMain===0" style="background: red;">
+    <div class="w-100 h-100" v-if="watchMain===0">
+      <div class="container-fluid main h-75 d-flex flex-column" >
+        <div class="prueba col d-flex flex-column  w-100  " style="background: red;" >
 
-      <div class="container-fluid main" style="background:blue ;">
-        <div class="prueba col d-flex justify-content-center align-items-center" style="background: yellow;">
-          <div class="container-title">
+
+
+          <div class="d-flex justify-content-center" >
             <h1 class="title">Inicio de sesion</h1>
           </div>
-          <div class="container-select mt-4">
-            <section class="container col-4">
-              <div class="contianer-label mb-3 mt-3">
+          <div class=" mt-5 d-flex justify-content-center align-items-center" >
+            <section class="w-25">
+              <div class="mb-2">
                 <label for="">Cargo</label>
               </div>
               <select class="form-select rounded-2 w-100" aria-label="Default select example" v-model="id">
@@ -114,18 +112,19 @@
 
           </div>
 
-          <div class="container container-select mt-5">
-            <section class="col-4">
-              <div class="contianer-label mb-3 ">
+          <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
+            <section class="w-25">
+              <div class=" contianer-label mb-3 d-flex">
                 <label for="">Pin de acceso</label>
               </div>
-              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+                <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+              
             </section>
           </div>
         </div>
 
-        <div class="container-button mt-5 col-3">
-          <button class="btn" @click="login"> Ingresar</button>
+        <div class="container col-3 d-flex justify-content-center div-button w-50">
+          <button class="btn btn-primary w-50 font-size-bold" @click="login"> Ingresar</button>
         </div>
 
       </div>
@@ -274,11 +273,11 @@
     </div>
 
     <!-- Inicio del Pide de pagina -->
-    <footer class="d-flex mt-auto">
+    <!-- <footer class="d-flex mt-auto">
       <div class="container d-flex align-items-center justify-content-center">
         <p class="fw-bold h6-font-size">copyright© Calzado Marin S.A.S</p>
       </div>
-    </footer>
+    </footer> -->
     <!-- Fin del pie de pagina  -->
 
 

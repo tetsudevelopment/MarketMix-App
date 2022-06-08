@@ -38,7 +38,6 @@ header img {
   font-size: var(--sm);
 }
 
-
 /* facturas */
 .table-container{
   display: flex;
@@ -51,59 +50,15 @@ header img {
   height: 300px;
 }
 
-
 /* Inicio header */
 
-
-
-
-
-.container-main{
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-.prueba{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-.prueba div{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-.main{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.container-select-2 section{
-  width: 40%;
-}
 #radio{
   width: 20%;
 }
-
 .form-select{
   box-shadow: 0 0 10px 0.1px;
 }
-.container-button{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  height: 4rem;
-  margin-top: 4px;
-}
-.container-button button{
-  background: var(--quaternary);
-  width: 60%;
-  border-radius: 20px;
-  font-size: 20px;
-}
+
 label{
   font-size: var(--sm);
   font-weight: bolder;
@@ -114,7 +69,6 @@ option{
 .form-control{
   background-color: var(--quinary);
   box-shadow: 0 0 10px 0.1px;
-  width: 100%;
 }
 h1{
   font-weight: bold;
