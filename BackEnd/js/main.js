@@ -27,7 +27,7 @@ var app = new Vue({
 
 
       invoice: 0,//factura
-      watchMain: 1,//vista principal
+      watchMain: 0,//vista principal
       watchAdmin: 0,
       pass: "1234",//contraseña
       id: 0,

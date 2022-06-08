@@ -20,19 +20,24 @@
   <div id="app" class="d-flex flex-column vh-100">
 
     <!-- Inicio del encabezado -->
-    <header>
-      <div class="container-fluid rounded container-header">
-        <h1>Calzado Marin S.A.S</h1>
-        <img src="https://cdn-icons-png.flaticon.com/128/2742/2742687.png" alt="Icon">
-        <button class="btn btn-primary ms-5" @click="salir">Salir</button>
-      </div>
-    </header>
+      <header class="mb-3">
+        <div class="container-fluid rounded w-100 h-100 d-flex align-items-center justify-content-center">
+          <div class="container d-flex">
+            <h1 class="fw-bold">Calzado Marin S.A.S</h1>
+            <img src="https://cdn-icons-png.flaticon.com/128/2742/2742687.png" alt="Icon" class="ms-3">
+          </div>
+          <div class="container d-flex flex-row-reverse">
+            <button class="btn btn-primary " @click="salir"><img src="https://cdn-icons-png.flaticon.com/128/3456/3456192.png"
+                alt=""></button>
+          </div>
+        </div>
+      </header>
     <!-- Fin del encabezado -->
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime labore ipsam ipsa iste necessitatibus dolores
-          sapiente al
+    <p>
+      
 
-        </p>
-    
+    </p>
+
     <!-- factura  -->
     <div class="container-fluid container-main" v-if="invoice===1">
 
@@ -86,10 +91,10 @@
     </div>
 
     <!-- inicio login -->
-    <div class="container-fluid container-main" v-if="watchMain===0">
+    <div class="container-fluid container-main" v-if="watchMain===0" style="background: red;">
 
-      <div class="container-fluid main">
-        <div class="prueba col">
+      <div class="container-fluid main" style="background:blue ;">
+        <div class="prueba col d-flex justify-content-center align-items-center" style="background: yellow;">
           <div class="container-title">
             <h1 class="title">Inicio de sesion</h1>
           </div>
@@ -98,7 +103,7 @@
               <div class="contianer-label mb-3 mt-3">
                 <label for="">Cargo</label>
               </div>
-              <select class="form-select rounded-2" aria-label="Default select example" v-model="id">
+              <select class="form-select rounded-2 w-100" aria-label="Default select example" v-model="id">
                 <option selected>Seleccione un cargo </option>
                 <option value="1">Administrador(a)</option>
                 <option value="2">Secretario(a)</option>
@@ -114,7 +119,7 @@
               <div class="contianer-label mb-3 ">
                 <label for="">Pin de acceso</label>
               </div>
-              <input type="password" name="pin" id="pin" class="form-control rounded-2" v-model="pass">
+              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
             </section>
           </div>
         </div>
@@ -156,7 +161,7 @@
 
     <!-- Administrador-->
     <div class="container container-main" v-else-if="watchMain===1">
-      
+
       <div class="container ">
 
 
@@ -270,13 +275,13 @@
 
     <!-- Inicio del Pide de pagina -->
     <footer class="d-flex mt-auto">
-      <div class="container d-flex align-items-center justify-content-center" >
-        <h4>copyright© Calzado Marin S.A.S</h4>
+      <div class="container d-flex align-items-center justify-content-center">
+        <p class="fw-bold h6-font-size">copyright© Calzado Marin S.A.S</p>
       </div>
     </footer>
     <!-- Fin del pie de pagina  -->
-    
-    
+
+
   </div>
   <script src="../BackEnd/js/vue.js"></script>
   <script src="../BackEnd/js/main.js"></script>
