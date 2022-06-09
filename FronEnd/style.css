@@ -32,6 +32,9 @@ header {
 header img {
   height: 40px;
 }
+.section{
+  width: 30%;
+}
 
 .title-footer {
   font-weight: bold;
