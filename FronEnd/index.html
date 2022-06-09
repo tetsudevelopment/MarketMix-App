@@ -17,20 +17,20 @@
 </head>
 
 <body class="rounded">
-  <header class="mb-3">
-    <div class="container-fluid rounded w-100 h-100 d-flex align-items-center justify-content-center">
-      <div class="container d-flex">
-        <h1 class="fw-bold">Calzado Marin S.A.S</h1>
-        <img src="https://cdn-icons-png.flaticon.com/128/2742/2742687.png" alt="Icon" class="ms-3">
-      </div>
-      <div class="container d-flex flex-row-reverse">
-        <button class="btn btn-primary " @click="salir"><img src="https://cdn-icons-png.flaticon.com/128/3456/3456192.png"
-            alt=""></button>
-      </div>
-    </div>
-  </header>
+  
   <div id="app" class="d-flex flex-column  justify-content-center align-items-center h-100">
-
+    <header class="mb-3 w-100">
+      <div class="container-fluid rounded w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="container d-flex">
+          <h1 class="fw-bold">Calzado Marin S.A.S</h1>
+          <img src="https://cdn-icons-png.flaticon.com/128/2742/2742687.png" alt="Icon" class="ms-3">
+        </div>
+        <div class="container d-flex flex-row-reverse">
+          <button class="btn btn-primary " @click="salir"><img src="https://cdn-icons-png.flaticon.com/128/3456/3456192.png"
+              alt=""></button>
+        </div>
+      </div>
+    </header>
     <!-- Inicio del encabezado -->
       
     <!-- Fin del encabezado -->
@@ -88,7 +88,7 @@
     </div>
 
     <!-- inicio login -->
-    <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4" v-if="watchMain===1" >
+    <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4" v-if="watchMain===0" >
         <div class="prueba col d-flex flex-column   w-100">
 
           <div class="d-flex justify-content-center" >
@@ -128,218 +128,229 @@
       </div>
 
       <!-- admin -->
-    <div class="container  w-100 h-75  d-flex flex-column justify-content-center mt-5 mb-4 rounded-3" v-else-if="watchMain===1">
-        <div class="prueba col d-flex flex-column  w-100 h-100">
-
-          <div class="d-flex justify-content-center" >
-            <h1 class="title">Administrador del sistema</h1>
-          </div>
-          <div class=" mt-2 d-flex justify-content-center align-items-center">
-            <section class="section">
-              <div class="mb-2">
-                <label for="">Cargo</label>
-              </div>
-              <select class="form-select rounded-2 w-100" aria-label="Default select example" @change="adminWatch()" v-model="id">
-                <option value="0" >Seleccione un cargo </option>
-                <option value="2" >Secretario(a)</option>
-                <option value="3" >Vendedor(a)</option>
-                <option value="4" >Ensamblador(a)</option>
-              </select>
-            </section>
-
-          </div>
-          <div class="secretaria mt-1"  v-if="watchAdmin===2">
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Salario base</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-
+    <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-if="watchMain===1">
+    
+      <div class="prueba col d-flex flex-column   w-100">
+    
+        <div class="d-flex justify-content-center">
+          <h1 class="title">Administrador del sistema</h1>
+        </div>
+    
+        <div class=" mt-2 d-flex justify-content-center align-items-center">
+          <section class="section">
+            <div class="mb-2">
+              <label for="">Cargo</label>
             </div>
-            
-          </div>
-          <div class="vendedor mt-1"  v-else-if="watchAdmin===3">
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Salario base</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-            
+            <select class="form-select rounded-2 w-100" aria-label="Default select example" @change="admin()"
+              v-model="watchAdmin">
+              <option value="0">Seleccione un cargo </option>
+              <option value="1">Secretario(a)</option>
+              <option value="2">Vendedor(a)</option>
+              <option value="3">Ensamblador(a)</option>
+            </select>
+          </section>
+    
+        </div>
+    
+        <div class="secretaria mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchAdmin===1">
+          <section class="section">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Salario base</label>
             </div>
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Comision de ventas</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-            
+            <input type="number" class="form-control rounded-2 w-100" v-model="baseSalary">
+          </section>
+        </div>
+        <div class="vendedor mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchAdmin===2">
+          <section class="section">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Salario base</label>
             </div>
-          </div>
-          <div class="Ensamblador mt-1" v-else-if="watchAdmin===4">
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Salario base</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-            
+            <input type="number" class="form-control rounded-2 w-100" v-model="baseSalary">
+          </section>
+          <section class="section mt-2">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Comision de ventas</label>
             </div>
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Cantidad maxima de Zapatos</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-            
+            <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
+          </section>
+    
+    
+        </div>
+        <div class="ensamblador mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchAdmin===3">
+          <section class="section">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Salario base</label>
             </div>
-            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
-              <section class="section">
-                <div class=" contianer-label mb-1 d-flex">
-                  <label for="">Cantidad maxima de Zapatillas</label>
-                </div>
-                <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
-              </section>
-            
+            <input type="number" class="form-control rounded-2 w-100" v-model="baseSalary">
+          </section>
+          <section class="section mt-2">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Cantidad maxima de Zapatos</label>
             </div>
-          </div>
-          
-    </div>
-
-        <div class="container col-3 d-flex justify-content-center w-50 mt-5" >
-          <button class="btn btn-primary w-50 font-size-bold" @click="save">Guardar</button>
+            <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
+          </section>
+          <section class="section mt-2">
+            <div class=" contianer-label mb-1 d-flex">
+              <label for="">Cantidad maxima de Zapatillas</label>
+            </div>
+            <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="salary">
+          </section>
         </div>
     
       </div>
+    
+      <div class="container col-3 d-flex justify-content-center w-50 mt-5">
+        <button class="btn btn-primary w-50 font-size-bold" @click="save"> Guardar</button>
+      </div>
+    
+    </div>
 
       <!-- secretaria -->
-      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-else-if="watchMain===0" style="background: red;">
+      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-else-if="watchMain===2">
         <div class="prueba col d-flex flex-column   w-100">
       
           <div class="d-flex justify-content-center">
             <h1 class="title">Secretario(a)</h1>
           </div>
-          <div class=" mt-5 d-flex justify-content-center align-items-center">
-            <section class="w-25">
-              <div class="mb-2">
-                <label for="">Cargo</label>
-              </div>
-              <select class="form-select rounded-2 w-100" aria-label="Default select example" v-model="id">
-                <option selected>Seleccione un cargo </option>
-                <option value="1">Administrador(a)</option>
-                <option value="2">Secretario(a)</option>
-                <option value="3">Vendedor(a)</option>
-                <option value="4">Ensamblador(a)</option>
-              </select>
-            </section>
-      
-          </div>
-      
           <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-            <section class="w-25">
+            <section class="w-25 mt-5">
               <div class=" contianer-label mb-3 d-flex">
-                <label for="">Pin de acceso</label>
+                <label for="">Horas extras</label>
               </div>
-              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
-      
+              <input type="number"  class="form-control rounded-2 w-100" v-model="extraHours">
             </section>
           </div>
         </div>
       
         <div class="container col-3 d-flex justify-content-center w-50 mt-5">
-          <button class="btn btn-primary w-50 font-size-bold" @click="login"> Ingresar</button>
+          <button class="btn btn-primary w-50 font-size-bold" @click="save"> Guardar</button>
         </div>
       
       </div>
 
       <!-- vendedor --> 
-      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-if="watchMain===0" style="background: red;">
+      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-if="watchMain===3">
 
         <div class="prueba col d-flex flex-column   w-100">
       
           <div class="d-flex justify-content-center">
             <h1 class="title">Vendedor(a)</h1>
           </div>
-          <div class=" mt-5 d-flex justify-content-center align-items-center">
-            <section class="w-25">
-              <div class="mb-2">
-                <label for="">Cargo</label>
-              </div>
-              <select class="form-select rounded-2 w-100" aria-label="Default select example" v-model="id">
-                <option selected>Seleccione un cargo </option>
-                <option value="1">Administrador(a)</option>
-                <option value="2">Secretario(a)</option>
-                <option value="3">Vendedor(a)</option>
-                <option value="4">Ensamblador(a)</option>
-              </select>
-            </section>
-      
-          </div>
       
           <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
             <section class="w-25">
               <div class=" contianer-label mb-3 d-flex">
-                <label for="">Pin de acceso</label>
+                <label for="">Zapatillas vendidas</label>
               </div>
-              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+              <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
       
+            </section>
+          </div>
+
+          <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
+            <section class="w-25">
+              <div class=" contianer-label mb-3 d-flex">
+                <label for="">Zapatos vendidos</label>
+              </div>
+              <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+          
             </section>
           </div>
         </div>
       
         <div class="container col-3 d-flex justify-content-center w-50 mt-5">
-          <button class="btn btn-primary w-50 font-size-bold" @click="login"> Ingresar</button>
+          <button class="btn btn-primary w-50 font-size-bold" @click="save"> Guardar</button>
         </div>
       
       </div>
 
       <!-- ensamblador -->
-      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-if="watchMain===0"
-        style="background: red;">
+      <div class="container  w-100 h-50  d-flex flex-column justify-content-center mt-5 mb-4 " v-if="watchMain===4">
       
         <div class="prueba col d-flex flex-column   w-100">
       
           <div class="d-flex justify-content-center">
             <h1 class="title">Ensamblador(a)</h1>
           </div>
-          <div class=" mt-5 d-flex justify-content-center align-items-center">
+      
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center">
             <section class="w-25">
-              <div class="mb-2">
-                <label for="">Cargo</label>
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">Horas extras</label>
               </div>
-              <select class="form-select rounded-2 w-100" aria-label="Default select example" v-model="id">
-                <option selected>Seleccione un cargo </option>
-                <option value="1">Administrador(a)</option>
-                <option value="2">Secretario(a)</option>
-                <option value="3">Vendedor(a)</option>
-                <option value="4">Ensamblador(a)</option>
+              <input type="number" class="form-control rounded-2 w-100" v-model="extraHours">
+      
+            </section>
+          </div>
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center">
+            <section class="w-25">
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">Zapatillas ensambladas</label>
+              </div>
+              <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+          
+            </section>
+          </div>
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center">
+            <section class="w-25">
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">Zapatos ensamblados</label>
+              </div>
+              <input type="number" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+          
+            </section>
+          </div>
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center" >
+            <section class="w-25">
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">¿Tienes hijos?</label>
+              </div>
+              <select class="form-select rounded-2 w-100" aria-label="Default select example" @change="sons()" v-model="watchSons">
+                <option value="0">Seleccione un cargo </option>
+                <option value="1">Si</option>
+                <option value="2">No</option>
+                <option value="3"> talvez</option>
+                
               </select>
             </section>
-      
           </div>
-      
-          <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
+
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchSons===1">
             <section class="w-25">
-              <div class=" contianer-label mb-3 d-flex">
-                <label for="">Pin de acceso</label>
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">¿Cuántos hijos tiene?</label>
               </div>
               <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
-      
+          
             </section>
           </div>
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchSons===2">
+            <section class="w-25">
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">Prueba</label>
+              </div>
+              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+          
+            </section>
+          </div>
+          <div class="mt-3 d-flex flex-column justify-content-center align-items-center" v-if="watchSons===3">
+            <section class="w-25">
+              <div class=" contianer-label mb-1 d-flex">
+                <label for="">talvez</label>
+              </div>
+              <input type="password" name="pin" id="pin" class="form-control rounded-2 w-100" v-model="pass">
+          
+            </section>
+          </div>
+
         </div>
       
         <div class="container col-3 d-flex justify-content-center w-50 mt-5">
-          <button class="btn btn-primary w-50 font-size-bold" @click="login"> Ingresar</button>
+          <button class="btn btn-primary w-50 font-size-bold" @click="save"> Guardar</button>
         </div>
       
       </div>
+      
 
 
 

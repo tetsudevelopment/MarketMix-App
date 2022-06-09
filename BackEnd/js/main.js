@@ -24,12 +24,14 @@ var app = new Vue({
           pass: 1234,
         },
       ],
-
-      invoice: 0, //factura
+      baseSalary:0,
+      extraHours: 0, //horas extras
       watchMain: 0, //vista principal
-      watchAdmin: 0,
+      watchAdmin: 0,// vista del Admin
+      watchSons: 0,// Vista a pregunta tiene hijos?
       pass: "1234", //contraseña
       id: 0,
+      idAdmin: 0,
     };
   },
 
@@ -37,8 +39,9 @@ var app = new Vue({
     salir: function () {
       this.watchMain = 0;
       this.watchAdmin = 0;
+      this.watchSons= 0,
       this.id = 0;
-      this.pass = 1234;
+      this.pass = "1234";
     },
     login: function () {
       const data = this.data.forEach((element) => {
@@ -63,21 +66,20 @@ var app = new Vue({
       // console.log(this.watch);
       console.log(data);
     },
-    adminWatch: function () {
-      const id = parseInt(this.id);
-      if (id === 2) {
-        return (this.watchAdmin = 2);
-      } else if (id === 3) {
-        return (this.watchAdmin = 3);
-      } else if (id === 4) {
-        return (this.watchAdmin = 4);
-      } else {
-        return (this.watchAdmin = 0);
-      }
+    admin: function () {
+      const watchAdmin = parseInt(this.watchAdmin);
+      if (watchAdmin === 1) return (this.watchAdmin = 1);
+      if (watchAdmin === 2) return (this.watchAdmin = 2);
+      if (watchAdmin === 3) return (this.watchAdmin = 3);
+    },
+    sons: function () {
+      const watchSons = parseInt(this.watchSons);
+      if (watchSons === 1) return (this.watchSons = 1);
+      if (watchSons === 2) return (this.watchSons = 2);
+      if (watchSons === 3) return (this.watchSons = 3);
     },
     save: function () {
       this.watchAdmin = 0;
-      
-    }
+    },
   },
 }); 
