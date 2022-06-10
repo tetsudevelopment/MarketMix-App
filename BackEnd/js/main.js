@@ -2,7 +2,7 @@ var app = new Vue({
   el: "#app",
   data() {
     return {
-      data: [
+      dataLogin: [
         {
           name: "Brayan",
           id: 1, //1 Administrador
@@ -27,23 +27,24 @@ var app = new Vue({
       dataAdmin: [
         {
           idAdmin: 1,
-          name: "Secretaria",
+          nameCharge: "Secretaria",
           baseSalary: 1000000,
         },
         {
           idAdmin: 2,
-          name: "Vendedor",
+          nameCharge: "Vendedor",
           baseSalary: 2000000,
           commission: 10,
         },
         {
           idAdmin: 3,
-          name: "Ensamblador",
+          nameCharge: "Ensamblador",
           baseSalary: 3000000,
-          maxShoes: 0,
-          maxSneakers: 0,
+          maxShoes: 5,
+          maxSneakers: 2,
         },
       ],
+      dataInvoce:[],
       baseSalary: 0, //salario base
       commission: 0, //vendedor-admin
       maxShoes: 0, //ensamblador-admin
@@ -70,9 +71,15 @@ var app = new Vue({
       this.watchSons= 0,
       this.id = 0;
       this.pass = "1234";
+      this.extraHours = 0;
+      this.saleShoes = 0;
+      this.saleSneakers = 0; //vendedor
+      this.joinShoes = 0; //ensamblador
+      this.joinSneakers= 0; //ensamblador
+      this.son= 0; //ensamblador
     },
     login: function () {
-      const data = this.data.forEach((element) => {
+      const dataLogin = this.dataLogin.forEach((element) => {
         const id = parseInt(this.id);
         const pass = parseInt(this.pass);
         if (id === 1) {
@@ -92,14 +99,25 @@ var app = new Vue({
         }
       });
       // console.log(this.watch);
-      console.log(data);
+      console.log(dataLogin);
     },
     //operaciones
-    
-
     //botones
     admin: function () {
-      const watchAdmin = parseInt(this.watchAdmin);
+       const watchAdmin = parseInt(this.watchAdmin);
+       const dataAdmin = this.dataAdmin.forEach((element) => {
+         if (watchAdmin ===1 && element.idAdmin===1) { 
+           this.baseSalary = element.baseSalary
+         }
+         else if (watchAdmin === 2 && element.idAdmin === 2) {
+           this.baseSalary = element.baseSalary;
+           this.commission= element.commission
+         } else if (watchAdmin === 3 && element.idAdmin === 3) {
+           this.baseSalary = element.baseSalary;
+           this.maxShoes = element.maxShoes;
+           this.maxSneakers = element.maxSneakers;
+         }
+       });
       if (watchAdmin === 1) return (this.watchAdmin = 1);
       if (watchAdmin === 2) return (this.watchAdmin = 2);
       if (watchAdmin === 3) return (this.watchAdmin = 3);
@@ -112,29 +130,43 @@ var app = new Vue({
     },
     save: function () {
       const id = parseInt(this.id)
+      //save admin
       if (id === 1) {
         const idAdmin = parseInt(this.watchAdmin)
-        const dataAdmin = this.dataAdmin.forEach((element) => {
-          if (idAdmin === element.idAdmin) {
-            const baseSalary = element.baseSalary;
-            console.log(baseSalary);
-            return this.baseSalary= baseSalary
-          } 
-        })
+          if (idAdmin === 1) {
+            let elementIndex = this.dataAdmin.findIndex((obj) => obj.idAdmin === 1);
+            this.dataAdmin[elementIndex].baseSalary = this.baseSalary;
+            console.log(this.dataAdmin);
+            alert('Datos guardador correctamente');
+            this.watchAdmin = 0;
+          } else if (idAdmin === 2) {
+            let elementIndex = this.dataAdmin.findIndex((obj) => obj.idAdmin === 2);
+            this.dataAdmin[elementIndex].baseSalary = this.baseSalary;
+            this.dataAdmin[elementIndex].commission = this.commission;
+            console.log(this.dataAdmin);
+            console.log("vendedor");
+            alert("Datos guardador correctamente");
+            this.watchAdmin = 0;
+          } else if (idAdmin === 3) {
+            let elementIndex = this.dataAdmin.findIndex((obj) => obj.idAdmin === 3);
+            this.dataAdmin[elementIndex].baseSalary = this.baseSalary;
+            this.dataAdmin[elementIndex].maxShoes = this.maxShoes;
+            this.dataAdmin[elementIndex].maxSneakers = this.maxSneakers;
+            console.log(this.dataAdmin);
+            console.log("Ensamblador");
+            alert("Datos guardador correctamente");
+            this.watchAdmin = 0;
+          } else {
+            alert("Seleccione el cargo que desea modificar");
+          }
         
-        if (idAdmin === 1) {
-          alert("Secretaria");
-        } else if (idAdmin === 2) {
-          alert("Vendedor");
-        } else if (idAdmin === 3) {
-          alert("Ensamblador");
-        } else {
-          alert('Seleccione el cargo que desea modificar')
-        }
+        //save secretaria
       } else if (id === 2) {
         alert("Secretaria");
+        //save vendedor
       } else if (id === 3) {
         alert("Vendedor");
+        //save ensamblador
       } else if (id === 4) {
         alert("Ensamblador");
       } else {
