@@ -54,7 +54,10 @@ var app = new Vue({
       joinShoes: 0, //ensamblador
       joinSneakers: 0, //ensamblador
       son: 0, //ensamblador
+      priceExtra:0,//valor horas extras
       extraHours: 0, //horas extras
+      totalExtra: 0,//total extra
+      totalSettlement:0,// total liquidacion
       watchMain: 0, //vista principal
       watchAdmin: 0, // vista del Admin
       watchSons: 0, // Vista a pregunta tiene hijos?
@@ -65,7 +68,13 @@ var app = new Vue({
   },
 
   methods: {
+    getName: function (data) {
+      this.dataLoginata.forEach(element => {
+        return element.name
+      });
+    },
     salir: function () {
+      this.baseSalary = 0;
       this.watchMain = 0;
       this.watchAdmin = 0;
       this.watchSons= 0,
@@ -87,7 +96,7 @@ var app = new Vue({
             return (this.watchMain = 1);
         } else if (id === 2) {
           if (id === element.id && pass === element.pass)
-            return (this.watchMain = 2);
+            return this.watchMain = 2;
         } else if (id === 3) {
           if (id === element.id && pass === element.pass)
             return (this.watchMain = 3);
@@ -162,7 +171,34 @@ var app = new Vue({
         
         //save secretaria
       } else if (id === 2) {
-        alert("Secretaria");
+        const dataAdmin = this.dataAdmin.forEach((element) => {
+          if (element.idAdmin === 1) {
+            this.baseSalary = parseInt(element.baseSalary);
+            this.priceExtra = this.baseSalary / 240;
+            this.totalExtra = this.priceExtra * this.extraHours;
+            this.totalExtra = Math.round(this.totalExtra)
+            this.totalSettlement= this.totalExtra+ this.baseSalary
+            console.log('Horas extras ' + this.extraHours + ' Salario base ' + this.baseSalary + ' Precio hora ' + this.priceExtra + ' Precio multiplicado ' + this.totalExtra);
+            this.dataLogin.forEach((element) => {
+              if (id === element.id) {
+                let nameUser = element.name;
+                // console.log('Nombre ' + nameUser + ' Id: ' + idUser);
+                this.dataInvoce.push({
+                  name: nameUser,
+                  nameCharge: "Secretario(a)",
+                  extraHours: this.extraHours,
+                  baseSalary: this.baseSalary,
+                  priceExtra: this.priceExtra,
+                  totalSettlement: this.totalSettlement,
+                });
+                console.log(this.dataInvoce);
+              }
+              
+            });
+          } else {
+            console.log("Error");
+          }
+        });
         //save vendedor
       } else if (id === 3) {
         alert("Vendedor");
