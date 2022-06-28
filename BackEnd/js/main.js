@@ -325,6 +325,7 @@ var app = new Vue({
       } else {
         alert("Error");
       }
+      this.registro();
     },
     detalle(id) {
       if (id == 1) {
