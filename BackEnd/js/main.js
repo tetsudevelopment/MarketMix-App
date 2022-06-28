@@ -98,7 +98,7 @@ var app = new Vue({
       extraHours: 0, //horas extras
       totalExtra: 0, //total extra
       totalSettlement: 0, // total liquidacion
-      watchMain: 1, //vista principal
+      watchMain: 0, //vista principal
       watchAdmin: 0, // vista del Admin
       watchSons: 0, // Vista a pregunta tiene hijos?
       pass: "1234", //contraseña
