@@ -106,6 +106,7 @@ var app = new Vue({
       idAdmin: 0, // usuarios de admin
       watchTable: 0,
       watchTableInvoce: 0,
+      counter: 0,
     };
   },
 
@@ -123,6 +124,7 @@ var app = new Vue({
       this.joinSneakers = 0; //ensamblador
       this.son = 0; //ensamblador
       this.watchTable = 0;
+      
     },
     login: function () {
       const dataLogin = this.dataLogin.find((element) => {
@@ -141,7 +143,16 @@ var app = new Vue({
           if (id == element.id && pass == element.pass)
             return (this.watchMain = 4);
         } else {
-          return alert("Los datos no han sido agregados correctamente");
+          this.counter = this.counter + 1;
+          console.log(this.counter + " contador");
+          console.log(this.dataLogin.length);
+          if (this.counter == this.dataLogin.length) {
+            this.counter = 0;
+            return alert("Los datos no han sido agregados correctamente");
+          } else {
+            console.log("Error");
+          }
+          
         }
       });
       // console.log(this.watch);
@@ -186,6 +197,7 @@ var app = new Vue({
             this.dataAdmin[elementIndex].baseSalary = parseInt(this.baseSalary);
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           } else {
             this.dataInvoce[indexInvoice].baseSalary = parseInt(
               this.baseSalary
@@ -193,12 +205,14 @@ var app = new Vue({
             this.dataAdmin[elementIndex].baseSalary = parseInt(this.baseSalary);
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           }
         } else if (idAdmin == 2) {
           if (indexInvoice == -1) {
             this.dataAdmin[elementIndex].baseSalary = parseInt(this.baseSalary);
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           } else {
             this.dataAdmin[elementIndex].baseSalary = parseInt(this.baseSalary);
             this.dataInvoce[indexInvoice].baseSalary = parseInt(
@@ -207,6 +221,7 @@ var app = new Vue({
             this.dataInvoce[indexInvoice].commission= parseInt(this.commission)
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           }
         } else if (idAdmin == 3) {
           if (indexInvoice == -1) {
@@ -215,6 +230,7 @@ var app = new Vue({
             this.dataAdmin[elementIndex].maxSneakers = this.maxSneakers;
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           } else {
             this.dataAdmin[elementIndex].baseSalary = this.baseSalary;
             this.dataAdmin[elementIndex].maxShoes = this.maxShoes;
@@ -222,6 +238,7 @@ var app = new Vue({
             this.dataInvoce[indexInvoice].baseSalary = this.baseSalary;
             alert("Datos guardador correctamente");
             this.watchAdmin = 0;
+            this.registro();
           }
         } else {
           alert("Seleccione el cargo que desea modificar");
@@ -325,7 +342,7 @@ var app = new Vue({
       } else {
         alert("Error");
       }
-      this.registro();
+      
     },
     detalle(id) {
       if (id == 1) {
